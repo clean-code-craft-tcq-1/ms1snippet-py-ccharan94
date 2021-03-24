@@ -12,7 +12,8 @@ def hasAbnormalSpike(values,criteria):
   last_but_one_reading = len(values) - 1
   for i in range(last_but_one_reading):
     if(not isAbnormalSpike(values[i], values[i + 1], spike_threshold_limit[criteria])):
-      return False
+      return True
+  return False
 
 def isValidValueList(values):
     if isinstance(values, list) and len(values) != 0:
