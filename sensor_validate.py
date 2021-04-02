@@ -5,13 +5,13 @@ spike_threshold_limit         = {
 
 def isAbnormalSpike(value, nextValue, maxDelta):
   if nextValue - value > maxDelta:
-    return False
-  return True
+    return True
+  return False
 
 def hasAbnormalSpike(values,criteria):
   last_but_one_reading = len(values) - 1
   for i in range(last_but_one_reading):
-    if(not isAbnormalSpike(values[i], values[i + 1], spike_threshold_limit[criteria])):
+    if(isAbnormalSpike(values[i], values[i + 1], spike_threshold_limit[criteria])):
       return True
   return False
 
@@ -21,6 +21,6 @@ def isValidValueList(values):
     return False
 
 def isValidReading(values,criteria):
-    if isValidValueList(values) and not hasAbnormalSpike(values,criteria):
-        return True
-    return False
+    if not isValidValueList(values) and hasAbnormalSpike(values,criteria):
+        return False
+    return True
