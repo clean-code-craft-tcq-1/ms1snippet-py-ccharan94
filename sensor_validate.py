@@ -21,6 +21,6 @@ def isValidValueList(values):
     return False
 
 def isValidReading(values,criteria):
-    if not isValidValueList(values) and hasAbnormalSpike(values,criteria):
+    if not isValidValueList(values) or hasAbnormalSpike(values,criteria):
         return False
     return True
